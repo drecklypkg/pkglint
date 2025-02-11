@@ -11,9 +11,7 @@ func CheckLinesPlist(pkg *Package, lines *Lines) {
 		defer trace.Call(lines.Filename)()
 	}
 
-	idOk := lines.CheckCvsID(0, `@comment `, "@comment ")
-
-	if idOk && lines.Len() == 1 {
+	if lines.Len() == 0 {
 		line := lines.Lines[0]
 		line.Errorf("PLIST files must not be empty.")
 		line.Explain(
